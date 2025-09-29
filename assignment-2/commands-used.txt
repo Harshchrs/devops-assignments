@@ -1,0 +1,11 @@
+# Run Grade Checker
+python3 grade_checker.py
+
+# Run Student Grades Program (simpler version)
+python3 student_grades_simple.py
+
+# Write to a file
+python3 write_file_simple.py
+
+# Read from a file
+python3 read_file_simple.py
