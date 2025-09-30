@@ -54,12 +54,3 @@ mv unzipped_dir devops-assignments/assignment-1
 cd ~/devops-assignments/assignment-1
 nano commands-used.txt
 # (paste all commands, save with Ctrl+O → Enter → Ctrl+X)
-
-# 11. Initialize Git repo and push to GitHub
-cd ~/devops-assignments
-git init
-git add .
-git commit -m "Add Assignment 1"
-git branch -M main
-git remote add origin <your_repo_url>
-git push -u origin main
