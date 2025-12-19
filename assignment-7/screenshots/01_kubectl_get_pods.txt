@@ -1,0 +1,13 @@
+NAMESPACE            NAME                                             READY   STATUS             RESTARTS         AGE   IP            NODE                     NOMINATED NODE   READINESS GATES
+default              backend-566bdd86df-n85j8                         1/1     Running            0                29m   10.244.0.12   tutedude-control-plane   <none>           <none>
+default              frontend-7dcd75bd85-dd2j5                        1/1     Running            0                45m   10.244.0.6    tutedude-control-plane   <none>           <none>
+default              mongo-68cbfd65c-bnptr                            1/1     Running            0                45m   10.244.0.7    tutedude-control-plane   <none>           <none>
+kube-system          coredns-7c65d6cfc9-29qqv                         0/1     Running            0                55m   10.244.0.2    tutedude-control-plane   <none>           <none>
+kube-system          coredns-7c65d6cfc9-9pfjv                         0/1     Running            0                55m   10.244.0.3    tutedude-control-plane   <none>           <none>
+kube-system          etcd-tutedude-control-plane                      1/1     Running            0                55m   172.18.0.6    tutedude-control-plane   <none>           <none>
+kube-system          kindnet-d9wqj                                    1/1     Running            0                55m   172.18.0.6    tutedude-control-plane   <none>           <none>
+kube-system          kube-apiserver-tutedude-control-plane            1/1     Running            0                55m   172.18.0.6    tutedude-control-plane   <none>           <none>
+kube-system          kube-controller-manager-tutedude-control-plane   1/1     Running            0                55m   172.18.0.6    tutedude-control-plane   <none>           <none>
+kube-system          kube-proxy-wgtxr                                 0/1     CrashLoopBackOff   15 (3m11s ago)   55m   172.18.0.6    tutedude-control-plane   <none>           <none>
+kube-system          kube-scheduler-tutedude-control-plane            1/1     Running            0                55m   172.18.0.6    tutedude-control-plane   <none>           <none>
+local-path-storage   local-path-provisioner-57c5987fd4-4d8f7          0/1     CrashLoopBackOff   14 (22s ago)     55m   10.244.0.4    tutedude-control-plane   <none>           <none>
