@@ -1,6 +1,0 @@
-NAMESPACE     NAME         TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)                  AGE   SELECTOR
-default       backend      NodePort    10.96.26.201   <none>        5000:30050/TCP           45m   app=backend
-default       frontend     NodePort    10.96.1.59     <none>        3000:30080/TCP           45m   app=frontend
-default       kubernetes   ClusterIP   10.96.0.1      <none>        443/TCP                  55m   <none>
-default       mongo        ClusterIP   10.96.11.9     <none>        27017/TCP                45m   app=mongo
-kube-system   kube-dns     ClusterIP   10.96.0.10     <none>        53/UDP,53/TCP,9153/TCP   55m   k8s-app=kube-dns
