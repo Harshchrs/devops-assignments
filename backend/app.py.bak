@@ -1,0 +1,53 @@
+import os, traceback, time
+from flask import Flask, request, jsonify
+from pymongo import MongoClient, errors
+
+app = Flask(__name__)
+
+MONGO_URI = os.environ.get("MONGO_URI", "mongodb://mongo:27017/")
+# try connecting, but if it fails we use an in-memory list as fallback
+collection = None
+use_memory = False
+try:
+    client = MongoClient(MONGO_URI, serverSelectionTimeoutMS=3000)
+    # quick check
+    client.server_info()
+    db = client["assignment6_db"]
+    collection = db["data"]
+    print("Mongo connected:", MONGO_URI)
+except Exception as e:
+    traceback.print_exc()
+    use_memory = True
+    memory_store = []
+    print("Mongo unavailable, using in-memory fallback")
+
+@app.route("/api", methods=["GET"])
+def get_data():
+    try:
+        if use_memory:
+            return jsonify(memory_store)
+        data = list(collection.find({}, {"_id": 0}))
+        return jsonify(data)
+    except Exception as e:
+        traceback.print_exc()
+        return jsonify({"error":"internal","detail":str(e)}),500
+
+@app.route("/submit", methods=["POST"])
+def submit_data():
+    try:
+        item_name = request.form.get("name") or request.form.get("itemName")
+        item_desc = request.form.get("email") or request.form.get("itemDescription")
+        if not item_name or not item_desc:
+            return "Missing data", 400
+        obj = {"itemName": item_name, "itemDescription": item_desc}
+        if use_memory:
+            memory_store.append(obj)
+        else:
+            collection.insert_one(obj)
+        return "Data submitted successfully"
+    except Exception:
+        traceback.print_exc()
+        return "Internal server error",500
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000, debug=False, use_reloader=False)
