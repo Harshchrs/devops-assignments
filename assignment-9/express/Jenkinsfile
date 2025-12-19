@@ -1,0 +1,15 @@
+pipeline {
+  agent any
+  stages {
+    stage('Install Deps') {
+      steps {
+        sh 'npm install'
+      }
+    }
+    stage('Restart Express') {
+      steps {
+        sh 'pm2 restart express || pm2 start index.js --name express'
+      }
+    }
+  }
+}

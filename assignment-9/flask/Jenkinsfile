@@ -1,0 +1,15 @@
+pipeline {
+  agent any
+  stages {
+    stage('Install Deps') {
+      steps {
+        sh 'pip3 install -r requirements.txt'
+      }
+    }
+    stage('Restart Flask') {
+      steps {
+        sh 'pm2 restart flask || pm2 start app.py --name flask --interpreter python3'
+      }
+    }
+  }
+}
