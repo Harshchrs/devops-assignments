@@ -10,3 +10,6 @@ __pycache__/
 # Tools
 bfg-*.jar
 
+# Node
+node_modules/
+package-lock.json
